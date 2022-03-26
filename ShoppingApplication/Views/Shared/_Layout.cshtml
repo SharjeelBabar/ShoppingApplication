@@ -1,0 +1,62 @@
+﻿@using ShoppingApplication.Models
+@using ShoppingApplication.Controllers
+@{
+    User user = new CommonController().GetUserInfo(Request);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Shopping Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/my-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Shopping Website", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    @if (user == null)
+                    {
+                        <li><a href="~/Account/Register">Register</a></li>
+                        <li><a href="~/Account/Login">Login</a></li>
+                    }
+                    else if (user != null && user.RoleId == 2)
+                    {
+                        <li><a href="~/Seller/MyProducts">My Products</a></li>
+                        <li><a href="~/Seller/MyOrders">My Orders</a></li>
+                        <li><a href="~/Account/Logout">Hello @user.Name, Logout?</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="~/Account/Logout">Hello @user.Name, Logout?</a></li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(".table").DataTable();
+    </script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
+

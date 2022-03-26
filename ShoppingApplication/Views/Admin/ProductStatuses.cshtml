@@ -1,0 +1,45 @@
+﻿@using ShoppingApplication.Models
+@model List<ProductStatus>
+@{
+    ViewBag.Title = "ProductStatuses";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>Product Statuses</h2>
+    <p>
+        @Html.ActionLink("Add Product Status", "AddProductStatus")
+    </p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Product Status Id
+                </th>
+                <th>
+                    Product Status
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        <a href="/Admin/EditProductStatus/@item.Id">Edit</a> |
+                        <a href="/Admin/DeleteProductStatus/@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

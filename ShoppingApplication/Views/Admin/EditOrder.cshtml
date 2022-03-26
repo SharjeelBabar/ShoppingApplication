@@ -1,0 +1,77 @@
+﻿@using ShoppingApplication.Models
+@model Order
+
+@{
+    ViewBag.Title = "EditOrder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container m-top">
+    <div class="col-lg-4 col-lg-push-4 col-md-4 col-md-push-4">
+        <div class="panel panel-default">
+            <h2 class="text-center">Edit Order</h2>
+            <div class="panel-body">
+                @using (Html.BeginForm("EditOrder", "Admin", FormMethod.Post))
+                {
+                    @Html.HiddenFor(m => m.Id);
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fa fa-check"></span>
+                            </span>
+                            @{
+                                List<Product> Products = ViewBag.Products as List<Product>;
+                            }
+
+                            <select name="ProductId" class="form-control">
+                                <option selected="selected" disabled>- Select Product -</option>
+                                @foreach (var item in Products)
+                                {
+                                    <option value="@item.Id">@item.Title</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fa fa-user"></span>
+                            </span>
+                            @{
+                                List<User> Buyers = ViewBag.Buyers as List<User>;
+                            }
+
+                            <select name="BuyerId" class="form-control">
+                                <option selected="selected" disabled>- Select Buyer -</option>
+                                @foreach (var item in Buyers)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fa fa-check"></span>
+                            </span>
+                            @{
+                                List<OrderStatus> OrderStatuses = ViewBag.OrderStatuses as List<OrderStatus>;
+                            }
+
+                            <select name="OrderStatusId" class="form-control">
+                                <option selected="selected" disabled>- Select Order Status -</option>
+                                @foreach (var item in OrderStatuses)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-default btn-custom">Edit Order</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

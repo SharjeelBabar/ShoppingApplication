@@ -1,0 +1,74 @@
+﻿@using ShoppingApplication.Models
+@model List<Product>
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>Products</h2>
+    <p>
+        @Html.ActionLink("Add New Product", "AddProduct")
+    </p>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Added On
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    SubCategory
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+                    <td>
+                        PKR @item.Price/-
+                    </td>
+                    <td>
+                        @item.AddedOn
+                    </td>
+                    <td>
+                        @item.SubCategory.Category.Name
+                    </td>
+                    <td>
+                        @item.SubCategory.Name
+                    </td>
+                    <td>
+                        @item.ProductStatus.Name
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        <a href="/Admin/EditProduct/@item.Id">Edit</a> |
+                        <a href="/Admin/DeleteProduct/@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

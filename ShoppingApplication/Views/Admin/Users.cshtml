@@ -1,0 +1,63 @@
+﻿@using ShoppingApplication.Models
+@model List<User>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>Users</h2>
+    <p>
+        @Html.ActionLink("Add New User", "AddUser")
+    </p>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Role
+                </th>
+                <th>
+                    Joined On
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.PhoneNumber
+                    </td>
+                    <td>
+                        @item.Role.Name
+                    </td>
+                    <td>
+                        @item.JoinedOn
+                    </td>
+                    <td>
+                        <a href="/Admin/EditUser/@item.Id">Edit</a> |
+                        <a href="/Admin/DeleteUser/@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ShoppingApplication.Models.AddressDetail>
+
+@{
+    ViewBag.Title = "AddressDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>AddressDetails</h2>
+    <p>
+        @Html.ActionLink("Add Address Detail", "AddAddressDetail")
+    </p>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    User Name
+                </th>
+                <th>
+                    House Number
+                </th>
+                <th>
+                    Street Number
+                </th>
+                <th>
+                    Area
+                </th>
+                <th>
+                    City Name
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.User.Name
+                    </td>
+                    <td>
+                        @item.HouseNo
+                    </td>
+                    <td>
+                        @item.StreetNo
+                    </td>
+                    <td>
+                        @item.Area
+                    </td>
+                    <td>
+                        @item.City.Name
+                    </td>
+                    <td>
+                        <a href="/Admin/EditAddressDetail/@item.Id">Edit</a> |
+                        <a href="/Admin/DeleteAddressDetail/@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

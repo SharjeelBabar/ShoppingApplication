@@ -1,0 +1,62 @@
+﻿@using ShoppingApplication.Models
+@model List<Order>
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>Orders</h2>
+    <p>
+        @Html.ActionLink("Add New Order", "AddOrder")
+    </p>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    Product Title
+                </th>
+                <th>
+                    Order Date
+                </th>
+                <th>
+                    Buyer Name
+                </th>
+                <th>
+                    Seller Name
+                </th>
+                <th>
+                    Order Status
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @item.Product.Title
+                </td>
+                <td>
+                    @item.CreatedOn
+                </td>
+                <td>
+                    @item.Buyer.Name
+                </td>
+                <td>
+                    @item.Product.Seller.Name
+                </td>
+                <td>
+                    @item.OrderStatus.Name
+                </td>
+                <td>
+                    <a href="/Admin/EditOrder/@item.Id">Edit</a> |
+                    <a href="/Admin/DeleteOrder/@item.Id">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

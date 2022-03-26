@@ -1,0 +1,55 @@
+﻿body {
+}
+.btn-custom {
+    background-color: black;
+    color: white;
+}
+    .btn-custom:hover {
+        background-color: black;
+        color: white;
+    }
+.btn-quote {
+    color: black;
+    background-color: #e8c314;
+    border: none;
+}
+.m-top {
+    margin-top: 50px;
+}
+input, select, textarea {
+    max-width: 320px;
+}
+.cover-img{
+    width:100%
+}
+.product-img {
+    width: auto;
+    height: 180px;
+}
+.product-title{
+    color:black;
+    font-weight:bolder
+}
+.bg-footer {
+    background-color: #222;
+}
+.text-white {
+    color: white;
+}
+
+.mt-60{
+    margin-top:50px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.footer-text {
+    color: gray;
+}
+.links {
+    color: gray;
+    text-decoration: none;
+}
+    .links:hover, .links:active, .links:visited {
+    color: gray;
+    }
